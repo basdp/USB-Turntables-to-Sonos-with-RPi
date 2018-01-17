@@ -1,7 +1,7 @@
 #! /bin/sh
 ### BEGIN INIT INFO
 # Provides:          darkice
-# Required-Start:    $remote_fs $syslog $network $named $time alsa-utils
+# Required-Start:    $remote_fs $syslog $network $named $time alsa-utils icecast2
 # Required-Stop:     $remote_fs $syslog $network
 # Default-Start:     2 3 4 5
 # Default-Stop:      0 1 6
