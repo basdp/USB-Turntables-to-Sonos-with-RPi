@@ -88,12 +88,6 @@ sampleRate      = 44100   # sample rate 11025, 22050 or 44100
 bitsPerSample   = 16      # bits
 channel         = 2       # 2 = stereo
 
-#[input]
-#device = jack_auto
-#sampleRate = 44100
-#bitsPerSample = 16
-#channel = 2
-
 [icecast2-0]
 bitrateMode     = cbr       # constant bit rate ('cbr' constant, 'abr' average)
 #quality         = 1.0       # 1.0 is best quality (use only with vbr)
