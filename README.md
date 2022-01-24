@@ -100,7 +100,8 @@ name            = Turntable
 highpass        = 18
 lowpass         = 20000
 description	= Turntable
-password=raspberry    # source password for the IceCast2 server
+
+password=raspberry
 ```
 For more information about this file and the parameters you can change, see http://manpages.ubuntu.com/manpages/zesty/man5/darkice.cfg.5.html
 
