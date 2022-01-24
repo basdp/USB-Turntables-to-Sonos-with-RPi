@@ -95,12 +95,12 @@ format          = mp3       # format. Choose 'vorbis' for OGG Vorbis
 bitrate         = 320       # bitrate
 server          = localhost # or IP
 port            = 8000      # port for IceCast2 access
-password        = raspberry    # source password for the IceCast2 server
 mountPoint      = turntable.mp3  # mount point on the IceCast2 server .mp3 or .ogg
 name            = Turntable
 highpass        = 18
 lowpass         = 20000
 description	= Turntable
+password=raspberry    # source password for the IceCast2 server
 ```
 For more information about this file and the parameters you can change, see http://manpages.ubuntu.com/manpages/zesty/man5/darkice.cfg.5.html
 
