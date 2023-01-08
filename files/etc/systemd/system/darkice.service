@@ -1,0 +1,17 @@
+[Unit]
+Description=DarkIce Icecast Network Audio Streamer
+After=icecast.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/darkice -c /etc/darkice.cfg
+ExecReload=/bin/kill -HUP $MAINPID
+User=root
+Group=root
+#WorkingDirectory=/usr/share/icecast2/
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
+

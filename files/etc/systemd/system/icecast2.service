@@ -1,0 +1,15 @@
+[Unit]
+Description=Icecast Network Audio Streaming Server
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/icecast2 -c /etc/icecast2/icecast.xml
+ExecReload=/bin/kill -HUP $MAINPID
+User=icecast2
+Group=icecast
+#WorkingDirectory=/usr/share/icecast2/
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

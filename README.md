@@ -13,6 +13,17 @@ Click the Gear icon for advanced options
  - Set the hostname to `vinyl`,
  - Set the userid/password to something you want.
 
+## OPTION 1: automated install
+Plug in your Raspberry Pi, ssh to it, and run the following
+
+```shell
+smorton@homepc:~$ ssh vinyl@vinyl.local
+vinyl@vinyl:~ $ cd /tmp && wget https://github.com/stephencmorton/USB-Turntables-to-Sonos-with-RPi/archive/master.zip && unzip master.zip && USB-Turntables-to-Sonos-with-RPi-master/scripts/install.sh
+```
+
+Skip ahead to "Check if steaming is working".
+
+## OPTION 2: manual install
 
 ## 2. Connect the USB Turntable to the Raspberry Pi
 Now, connect the turntable to the Raspberry Pi, using USB. You can use the command `arecord -l` to check if your device has been detected. Mine shows this:
@@ -29,9 +40,9 @@ Make a note of the card number `1` in my case ("`card: 1`") or even better the n
 ALSA is the lowest-level linux sound subsystem. We're configuring the input so that darkice can use it.
 
 As most USB turntables do not have hardware volume control, and the input volume is stuck on roughly half of what it should be, we need to add a software volume control.
-Create the file `/etc/asound.conf` and edit it to add the following contents:
+Create the file [/etc/asound.conf](files/etc/asound.conf) and edit it to add the following contents:
 
-```
+```yaml
 pcm.dmic_hw {
     type hw
 #    card 1
@@ -75,7 +86,7 @@ sudo apt-get install -y darkice icecast2
 Select `Yes` to configure Icecast. You can leave everything as default, but if you change the password, make sure you change the password in the configuration in the next steps.
 
 ## 5. Configure Darkice
-Darkice is the software that is recording from the USB device and encoding that into MP3. To configure it, create or edit the file `/etc/darkice.cfg`, and put this in:
+Darkice is the software that is recording from the USB device and encoding that into MP3. To configure it, create or edit the file [/etc/darkice.cfg](files/etc/darkice.cfg), and put this in:
 ```ini
 # this section describes general aspects of the live streaming session
 [general]
@@ -112,7 +123,7 @@ public          = no
 password        = hackme   # or whatever you set your icecast2 password to
 
 ```
-For more information about this file and the parameters you can change, see http://manpages.ubuntu.com/manpages/zesty/man5/darkice.cfg.5.html
+For more information about this file and the parameters you can change, see [the darkice.cfg manpage](http://manpages.ubuntu.com/manpages/zesty/man5/darkice.cfg.5.html).
 
 ## 8. Autostart Darkice and IceCast
 Darkice and icecast use old-fashioned init.d controls. Let's just modernize them while we're at it.
@@ -123,7 +134,7 @@ sudo update-rc.d darkice remove
 sudo update-rc.d icecast2 remove
 ```
 
-Copy the below files to `/etc/systemd/system/darkice.service` and `/etc/systemd/system/icecast2.service`.
+Copy the code below to [/etc/systemd/system/darkice.service](files/etc/systemd/system/darkice.service) and [/etc/systemd/system/icecast2.service](files/etc/systemd/system/icecast2.service).
 Then run
 
 ```bash
@@ -187,10 +198,8 @@ To speed up your Raspberry Pi's boot time you can
 - Give your device a static IP address. (You will need to also assign a static IP to your device via your home router but there's a lot of speed to be gained here.)
 - Disable unnecessary system services.
 
-This is left as an exercise to the reader, but various resources are listed below.
+This is left as an exercise to the reader, but there are various code snippets in [fasterboot.sh](scripts/fasterboot.sh) to look at as well as various links in [technical notes and references](technical.md).
 
-- https://singleboardbytes.com/637/how-to-fast-boot-raspberry-pi.htm
-- https://www.linux.com/topic/desktop/cleaning-your-linux-startup-process/
-- https://sleeplessbeastie.eu/2022/06/01/how-to-disable-onboard-wifi-and-bluetooth-on-raspberry-pi-4/
-- https://raspians.com/how-to-fast-boot-raspberry-pi/
-- https://www.raspberrypi.com/documentation/computers/config_txt.html
+## 10. Further reading.
+See also 
+ - [technical notes and references](technical.md)
