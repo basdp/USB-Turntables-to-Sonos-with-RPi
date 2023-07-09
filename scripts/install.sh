@@ -19,7 +19,7 @@ echo " ... Running as root now."
 echo -e "\n\nInstalling darkice and icecast2.\nSay 'yes' to icecast config and accept the defaults or change passwords as you want.\n"
 sleep 3
 apt-get update
-apt-get install =y darkice icecast2
+apt-get install -y darkice icecast2
 
 update-rc.d darkice remove
 update-rc.d icecast2 remove
