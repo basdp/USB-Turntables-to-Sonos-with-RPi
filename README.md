@@ -18,7 +18,7 @@ Plug in your Raspberry Pi, ssh to it, and run the following
 
 ```shell
 smorton@homepc:~$ ssh vinyl@vinyl.local
-vinyl@vinyl:~ $ cd /tmp && wget https://github.com/stephencmorton/USB-Turntables-to-Sonos-with-RPi/archive/master.zip && unzip master.zip && USB-Turntables-to-Sonos-with-RPi-master/scripts/install.sh
+vinyl@vinyl:~ $ cd /tmp && wget https://github.com/basdp/USB-Turntables-to-Sonos-with-RPi/archive/master.zip && unzip master.zip && USB-Turntables-to-Sonos-with-RPi-master/scripts/install.sh
 ```
 
 Skip ahead to "Check if steaming is working".
